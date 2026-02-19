@@ -1,23 +1,37 @@
-import { useState, useEffect } from "react";
-
+import React from "react";
 function TreeNode({ label, children, highlight }) {
-  const [showLine, setShowLine] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setShowLine(true), 50);
-    return () => clearTimeout(timeout);
-  }, []);
-
   return (
-    <div style={{ position: "relative", marginBottom: "40px", textAlign: "center" }}>
-      <div className={`tree-node ${highlight ? "highlight" : ""}`}>{label}</div>
+    <div className="tree-node-wrapper">
+      <div className={`tree-parent ${highlight ? "highlight" : ""}`}>
+        {label}
+      </div>
 
       {children && children.length > 0 && (
-        <div className="tree-children-horizontal">
-          {showLine && <div className="tree-line-horizontal"></div>}
-          {children.map((child, idx) => (
-            <TreeNode key={idx} {...child} />
+        <div className="tree-children-wrapper">
+          {/* Vertical line from parent */}
+          <div className="tree-connector"></div>
+
+          {/* Horizontal line from parent */}
+          <div className="tree-horizontal-line"></div>
+
+          {/* Vertical lines to each child */}
+          {children.map((_, idx) => (
+            <div
+              key={idx}
+              className="tree-line"
+              style={{
+                left: `${((idx + 0.5) / children.length) * 100}%`,
+                transform: "translateX(-50%)",
+              }}
+            ></div>
           ))}
+
+          {/* Children nodes */}
+          <div className="tree-children">
+            {children.map((child, idx) => (
+              <TreeNode key={idx} {...child} />
+            ))}
+          </div>
         </div>
       )}
     </div>
@@ -35,7 +49,7 @@ export default function VirtualDOMTree({ diffKey }) {
   };
 
   return (
-    <div className="card">
+    <div className="card tree-card">
       <h2>Virtual DOM Tree</h2>
       <TreeNode {...treeData} />
     </div>

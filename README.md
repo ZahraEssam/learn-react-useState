@@ -33,7 +33,7 @@ It’s a **fun and educational project** to see how React updates the UI efficie
 
 ---
 
-[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-6366f1?style=flat&logo=github&logoColor=white)](https://github.com/ZahraEssam/learn-react-useState)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-6366f1?style=flat&logo=github&logoColor=white)](https://zahraessam.github.io/learn-react-useState/)
 
 ---
 
