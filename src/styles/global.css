@@ -232,11 +232,20 @@ button:active {
   transition: all 0.3s ease;
 }
 
-//* Highlight child node - bigger effect */
+.tree-children {
+  display: flex;
+  justify-content: center;
+  gap: 8px; 
+  margin-top: 60px;
+  width: 100%;
+  max-width: 900px; 
+}
+
+/* Highlight child node - bigger effect */
 .tree-child .tree-parent.highlight {
   border-color: #ef4444;
   box-shadow: 0 0 18px rgba(239, 68, 68, 0.6);
-  transform: scale(1.5); /* حجم أكبر */
+  transform: scale(1.5); 
   z-index: 10;
   transition: all 0.3s ease;
 }
